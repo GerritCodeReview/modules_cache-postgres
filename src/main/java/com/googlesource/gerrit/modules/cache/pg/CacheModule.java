@@ -15,10 +15,10 @@
 package com.googlesource.gerrit.modules.cache.pg;
 
 import com.google.gerrit.lifecycle.LifecycleModule;
-import com.google.gerrit.server.cache.CacheImpl;
+import com.google.gerrit.server.ModuleImpl;
 import com.google.gerrit.server.cache.PersistentCacheFactory;
 
-@CacheImpl(type = CacheImpl.Type.PERSISTENT)
+@ModuleImpl(name = com.google.gerrit.server.cache.CacheModule.PERSISTENT_MODULE)
 public class CacheModule extends LifecycleModule {
   @Override
   protected void configure() {
