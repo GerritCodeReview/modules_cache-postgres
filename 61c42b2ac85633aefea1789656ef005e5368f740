@@ -22,6 +22,30 @@
       "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c540529_1ba6b5dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-04-20T21:07:17Z",
+      "side": 1,
+      "message": "That is more like gut feeling than anything real :) sure the mem is better performing but this front load of everything that is potentially not even used is a waste too. I will try to do some research and in the worst case we can have this removal optional.",
+      "parentUuid": "b3362388_d479ff66",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
