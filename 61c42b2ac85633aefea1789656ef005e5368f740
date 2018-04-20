@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3362388_d479ff66",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1010008
+      },
+      "writtenOn": "2018-04-20T13:43:35Z",
+      "side": 1,
+      "message": "Can you elaborate on why you think the postgres engine doesn\u0027t have this problem?\n\nThe problem it is intended to solve is to avoiding executing a whole SQL query if we know that the cache key is definitely not contained in the DB. For a postgres backend, a negative result from the bloom filter would avoid sending a whole query over the wire, so if anything that seems like *more* of a benefit than when the SQL query is just executed in the local Java process.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
