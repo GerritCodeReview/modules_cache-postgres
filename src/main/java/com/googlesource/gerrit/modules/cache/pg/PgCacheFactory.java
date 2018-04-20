@@ -77,7 +77,6 @@ public class PgCacheFactory implements PersistentCacheFactory, LifecycleListener
   public void start() {
     if (executor != null) {
       for (PgCacheImpl<?, ?> cache : caches) {
-        executor.execute(cache::start);
         @SuppressWarnings("unused")
         Future<?> possiblyIgnoredError =
             cleanup.schedule(() -> cache.prune(cleanup), 30, TimeUnit.SECONDS);
