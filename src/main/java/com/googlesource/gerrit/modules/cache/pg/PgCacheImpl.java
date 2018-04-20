@@ -82,12 +82,10 @@ public class PgCacheImpl<K, V> extends AbstractLoadingCache<K, V> implements Per
       return h.value;
     }
 
-    if (store.mightContain(key)) {
-      h = store.getIfPresent(key);
-      if (h != null) {
-        mem.put(key, h);
-        return h.value;
-      }
+    h = store.getIfPresent(key);
+    if (h != null) {
+      mem.put(key, h);
+      return h.value;
     }
     return null;
   }
@@ -97,16 +95,14 @@ public class PgCacheImpl<K, V> extends AbstractLoadingCache<K, V> implements Per
     return mem.get(
             key,
             () -> {
-              if (store.mightContain(key)) {
-                ValueHolder<V> h = store.getIfPresent(key);
-                if (h != null) {
-                  return h;
-                }
+              ValueHolder<V> h = store.getIfPresent(key);
+              if (h != null) {
+                return h;
               }
 
-              ValueHolder<V> h = new ValueHolder<>(valueLoader.call());
-              h.created = TimeUtil.nowMs();
-              executor.execute(() -> store.put(key, h));
+              ValueHolder<V> newHolder = new ValueHolder<>(valueLoader.call());
+              newHolder.created = TimeUtil.nowMs();
+              executor.execute(() -> store.put(key, newHolder));
               return h;
             })
         .value;
@@ -123,7 +119,7 @@ public class PgCacheImpl<K, V> extends AbstractLoadingCache<K, V> implements Per
   @SuppressWarnings("unchecked")
   @Override
   public void invalidate(Object key) {
-    if (keyType.getRawType().isInstance(key) && store.mightContain((K) key)) {
+    if (keyType.getRawType().isInstance(key)) {
       executor.execute(() -> store.invalidate((K) key));
     }
     mem.invalidate(key);
@@ -148,10 +144,6 @@ public class PgCacheImpl<K, V> extends AbstractLoadingCache<K, V> implements Per
   @Override
   public DiskStats diskStats() {
     return store.diskStats();
-  }
-
-  void start() {
-    store.open();
   }
 
   void stop() {
