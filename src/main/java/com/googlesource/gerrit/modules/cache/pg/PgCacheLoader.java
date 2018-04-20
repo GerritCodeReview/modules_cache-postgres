@@ -31,16 +31,14 @@ public class PgCacheLoader<K, V> extends CacheLoader<K, ValueHolder<V>> {
 
   @Override
   public ValueHolder<V> load(K key) throws Exception {
-    if (store.mightContain(key)) {
-      ValueHolder<V> h = store.getIfPresent(key);
-      if (h != null) {
-        return h;
-      }
+    ValueHolder<V> h = store.getIfPresent(key);
+    if (h != null) {
+      return h;
     }
 
-    final ValueHolder<V> h = new ValueHolder<>(loader.load(key));
-    h.created = TimeUtil.nowMs();
-    executor.execute(() -> store.put(key, h));
+    final ValueHolder<V> newHolder = new ValueHolder<>(loader.load(key));
+    newHolder.created = TimeUtil.nowMs();
+    executor.execute(() -> store.put(key, newHolder));
     return h;
   }
 }

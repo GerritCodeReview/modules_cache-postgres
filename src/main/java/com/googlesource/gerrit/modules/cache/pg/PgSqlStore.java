@@ -15,11 +15,9 @@
 package com.googlesource.gerrit.modules.cache.pg;
 
 import com.google.common.cache.Cache;
-import com.google.common.hash.BloomFilter;
 import com.google.gerrit.common.TimeUtil;
 import com.google.gerrit.server.cache.PersistentCache.DiskStats;
 import com.google.inject.TypeLiteral;
-import java.io.InvalidClassException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -42,11 +40,7 @@ public class PgSqlStore<K, V> {
   private final BlockingQueue<PgSqlHandle> handles;
   private final AtomicLong hitCount = new AtomicLong();
   private final AtomicLong missCount = new AtomicLong();
-  private volatile BloomFilter<K> bloomFilter;
-  private int estimatedSize;
 
-  private final String qCount;
-  private final String qKeys;
   private final String qValue;
   private final String qTouch;
   private final String qPut;
@@ -73,8 +67,6 @@ public class PgSqlStore<K, V> {
     this.handles = new ArrayBlockingQueue<>(keep);
 
     // initiate all query strings
-    this.qCount = "SELECT COUNT(*) FROM \"data_" + this.name + "\"";
-    this.qKeys = "SELECT k FROM \"data_" + this.name + "\"";
     this.qValue = "SELECT v, created FROM \"data_" + this.name + "\" WHERE k=?";
     this.qTouch = "UPDATE \"data_" + this.name + "\" SET accessed=? WHERE k=?";
     this.qPut =
@@ -91,68 +83,10 @@ public class PgSqlStore<K, V> {
     this.qStats = "SELECT COUNT(*),SUM(space) FROM \"data_" + this.name + "\"";
   }
 
-  synchronized void open() {
-    if (bloomFilter == null) {
-      bloomFilter = buildBloomFilter();
-    }
-  }
-
   void close() {
     PgSqlHandle h;
     while ((h = handles.poll()) != null) {
       h.close();
-    }
-  }
-
-  boolean mightContain(K key) {
-    BloomFilter<K> b = bloomFilter;
-    if (b == null) {
-      synchronized (this) {
-        b = bloomFilter;
-        if (b == null) {
-          b = buildBloomFilter();
-          bloomFilter = b;
-        }
-      }
-    }
-    return b == null || b.mightContain(key);
-  }
-
-  private BloomFilter<K> buildBloomFilter() {
-    PgSqlHandle c = null;
-    try {
-      c = acquire();
-      try (Statement s = c.conn.createStatement()) {
-        if (estimatedSize <= 0) {
-          try (ResultSet r = s.executeQuery(qCount)) {
-            estimatedSize = r.next() ? r.getInt(1) : 0;
-          }
-        }
-
-        BloomFilter<K> b = newBloomFilter();
-        try (ResultSet r = s.executeQuery(qKeys)) {
-          while (r.next()) {
-            b.put(keyType.get(r, 1));
-          }
-        } catch (SQLException e) {
-          if (e.getCause() instanceof InvalidClassException) {
-            log.warn(
-                "Entries cached for {} "
-                    + "have an incompatible class and can't be deserialized. "
-                    + "Cache is flushed.", name);
-            invalidateAll();
-          } else {
-            throw e;
-          }
-        }
-        return b;
-      }
-    } catch (SQLException e) {
-      log.warn("Cannot build BloomFilter for {}: {}", name, e.getMessage());
-      c = close(c);
-      return null;
-    } finally {
-      release(c);
     }
   }
 
@@ -222,12 +156,6 @@ public class PgSqlStore<K, V> {
       return;
     }
 
-    BloomFilter<K> b = bloomFilter;
-    if (b != null) {
-      b.put(key);
-      bloomFilter = b;
-    }
-
     PgSqlHandle c = null;
     try {
       c = acquire();
@@ -284,7 +212,6 @@ public class PgSqlStore<K, V> {
       try (Statement s = c.conn.createStatement()) {
         s.executeUpdate(qInvalidateAll);
       }
-      bloomFilter = newBloomFilter();
     } catch (SQLException e) {
       log.warn("Cannot invalidate cache {}", name, e);
       c = close(c);
@@ -365,10 +292,5 @@ public class PgSqlStore<K, V> {
       h.close();
     }
     return null;
-  }
-
-  private BloomFilter<K> newBloomFilter() {
-    int cnt = Math.max(64 * 1024, 2 * estimatedSize);
-    return BloomFilter.create(keyType.funnel(), cnt);
   }
 }
