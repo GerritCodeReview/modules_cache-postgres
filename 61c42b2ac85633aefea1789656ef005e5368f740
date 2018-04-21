@@ -46,6 +46,30 @@
       "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "299e75e7_8a5c1092",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1010008
+      },
+      "writtenOn": "2018-04-21T05:58:39Z",
+      "side": 1,
+      "message": "I also have the gut feeling that the preloading may be too expensive. But there is still a benefit, it\u0027s just a question of whether the cost outweighs the benefit, which is something that I think should be decided with data. (But at the end of the day this is your plugin, I\u0027m not going to -2 this change or anything.)",
+      "parentUuid": "8c540529_1ba6b5dd",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
