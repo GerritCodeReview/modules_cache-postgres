@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2277dec4_89af167a",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgCacheImpl.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-04-23T15:12:08Z",
+      "side": 1,
+      "message": "nit: not used import",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 26
+      },
+      "revId": "fa389727f9ff76332411a384acc3ca42b8a3c66a",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    }
+  ]
+}
