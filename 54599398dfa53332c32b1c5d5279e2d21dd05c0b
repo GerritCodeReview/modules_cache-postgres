@@ -243,6 +243,30 @@
     },
     {
       "key": {
+        "uuid": "c49f4d3d_3b0f67a5",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgCacheImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T12:00:55Z",
+      "side": 1,
+      "message": "Sorry but seems Instant does not support this big temporal adjuster so needs to be done with a date:\n\n  LocalDateTime.now()\n            .with(TemporalAdjusters.firstDayOfMonth())\n            .withHour(01)\n            .truncatedTo(ChronoUnit.HOURS)\n            .toInstant(OffsetDateTime.now().getOffset())\n            .minusMillis(TimeUtil.nowMs())\n            .toEpochMilli();",
+      "parentUuid": "761ce199_24c6fc70",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 38
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e2482f07_fc7b84e8",
         "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
         "patchSetId": 1
