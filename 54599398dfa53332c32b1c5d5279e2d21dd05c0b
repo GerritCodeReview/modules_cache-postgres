@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "5ee0a2cd_8c140d4a",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Cannot be a Gerrit plugin given it looks and builds like a plugin?",
+      "range": {
+        "startLine": 8,
+        "startChar": 17,
+        "endLine": 8,
+        "endChar": 43
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5e50273b_4939ee65",
         "filename": "README.md",
         "patchSetId": 1
@@ -65,6 +88,29 @@
     },
     {
       "key": {
+        "uuid": "49bdeb55_236dcf1c",
+        "filename": "README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Typo: derived\n\nWhat kind of derivation? Is it the same value? A percentage of the value?",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f002458c_95c2018c",
         "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgCacheBindingProxy.java",
         "patchSetId": 1
@@ -82,6 +128,46 @@
         "endLine": 25,
         "endChar": 14
       },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e9bcb7_c9c7529c",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgCacheFactory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Use logger built-in formatter instead:\n\n  log.info(\"Finishing {} disk cache updates\", pending.size());",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 87
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcc694c3_495d7c30",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgCacheFactory.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Shouldn\u0027t be the interruption flag be restored? \n\n  Thread.currentThread().interrupt()",
       "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
@@ -127,6 +213,213 @@
         "startChar": 53,
         "endLine": 70,
         "endChar": 55
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "761ce199_24c6fc70",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgCacheImpl.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "I think we should use here the Java 8 way, may be something like:\n\n  long delay \u003d\n        Instant.now()\n            .with(TemporalAdjusters.firstDayOfMonth())\n            .with(ChronoField.HOUR_OF_DAY, 1)\n            .truncatedTo(ChronoUnit.HOURS)\n            .minusMillis(TimeUtil.nowMs())\n            .toEpochMilli();",
+      "range": {
+        "startLine": 167,
+        "startChar": 4,
+        "endLine": 172,
+        "endChar": 38
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2482f07_fc7b84e8",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Use logger built-in formatter:\n\nlog.warn(\n         \"Entries cached for {} have an incompatible class\"\n              + \" and can\u0027t be deserialized. \"\n              + \"Cache is flushed.\", name);",
+      "range": {
+        "startLine": 140,
+        "startChar": 17,
+        "endLine": 143,
+        "endChar": 43
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2340d20_5bc1edbd",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Same as above:\n\n  log.warn(\"Cannot build BloomFilter for {}: {}\", name, e.getMessage());",
+      "range": {
+        "startLine": 152,
+        "startChar": 16,
+        "endLine": 152,
+        "endChar": 77
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "66e79142_de371ef9",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "Same:\n\n  log.warn(\"Cannot read cache {} for {}\", name, key, e);",
+      "range": {
+        "startLine": 192,
+        "startChar": 6,
+        "endLine": 192,
+        "endChar": 63
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ff941a3_500d0c5c",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "log.warn(\"Cannot put into cache {}\", name, e);",
+      "range": {
+        "startLine": 249,
+        "startChar": 6,
+        "endLine": 249,
+        "endChar": 51
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf8a776b_7419ac0d",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "log.warn(\"Cannot invalidate cache {}\", name, e);",
+      "range": {
+        "startLine": 262,
+        "startChar": 6,
+        "endLine": 262,
+        "endChar": 53
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "107389e3_4e9a8964",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "log.warn(\"Cannot invalidate cache {}\", name, e);",
+      "range": {
+        "startLine": 290,
+        "startChar": 6,
+        "endLine": 290,
+        "endChar": 53
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff30a9df_7a19bcfd",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "log.warn(\"Cannot prune cache {}\", name, e);",
+      "range": {
+        "startLine": 324,
+        "startChar": 6,
+        "endLine": 324,
+        "endChar": 48
+      },
+      "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b57a3aa5_75965d6f",
+        "filename": "src/main/java/com/googlesource/gerrit/modules/cache/pg/PgSqlStore.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1019328
+      },
+      "writtenOn": "2018-04-23T11:27:39Z",
+      "side": 1,
+      "message": "log.warn(\"Cannot get DiskStats for {}\", name, e);",
+      "range": {
+        "startLine": 345,
+        "startChar": 6,
+        "endLine": 345,
+        "endChar": 54
       },
       "revId": "54599398dfa53332c32b1c5d5279e2d21dd05c0b",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
