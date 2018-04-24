@@ -159,13 +159,14 @@ public class PgCacheImpl<K, V> extends AbstractLoadingCache<K, V> implements Per
   void prune(ScheduledExecutorService service) {
     store.prune(mem);
 
-    long delay = LocalDateTime.now()
-        .with(TemporalAdjusters.firstDayOfMonth())
-        .withHour(01)
-        .truncatedTo(ChronoUnit.HOURS)
-        .toInstant(OffsetDateTime.now().getOffset())
-        .minusMillis(TimeUtil.nowMs())
-        .toEpochMilli();
+    long delay =
+        LocalDateTime.now()
+            .with(TemporalAdjusters.firstDayOfMonth())
+            .withHour(01)
+            .truncatedTo(ChronoUnit.HOURS)
+            .toInstant(OffsetDateTime.now().getOffset())
+            .minusMillis(TimeUtil.nowMs())
+            .toEpochMilli();
     @SuppressWarnings("unused")
     Future<?> possiblyIgnoredError =
         service.schedule(() -> prune(service), delay, TimeUnit.MILLISECONDS);
