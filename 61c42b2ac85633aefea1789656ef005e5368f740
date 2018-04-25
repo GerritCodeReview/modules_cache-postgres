@@ -70,6 +70,30 @@
       "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb78cb1c_42ca2d9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1012987
+      },
+      "writtenOn": "2018-04-25T12:18:46Z",
+      "side": 1,
+      "message": "I would prefer we get some numbers before removing the bloomfilter. I will try to make time next week to test with and without the filter.",
+      "parentUuid": "299e75e7_8a5c1092",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
