@@ -94,6 +94,30 @@
       "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
       "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a2c9277_9e6ea920",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1025452
+      },
+      "writtenOn": "2018-04-26T06:12:08Z",
+      "side": 1,
+      "message": "This change seems to be half backed :/ it was working fine when I was testing it after some changes were already in the cache but it fails when empty site is initialised - Hugo I will let you know when I have some time to fix it ;)",
+      "parentUuid": "cb78cb1c_42ca2d9e",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 24
+      },
+      "revId": "61c42b2ac85633aefea1789656ef005e5368f740",
+      "serverId": "173816e5-2b9a-37c3-8a2e-48639d4f1153",
+      "unresolved": true
     }
   ]
 }
