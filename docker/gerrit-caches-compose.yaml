@@ -1,0 +1,21 @@
+version: '3.5'
+
+services:
+  db:
+    container_name: ${DB_CONTAINER_NAME:-gerrit-pg}
+    image: postgres:${DB_IMAGE_ID:-9.6.8-alpine}
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=${DB_USER:-postgres}
+      - POSTGRES_PASSWORD=${DB_PASS:-postgres}
+    ports:
+      - '5432:5432'
+    volumes:
+      - type: bind
+        source: ./create-gerrit-dbs.sh
+        target: /docker-entrypoint-initdb.d/create-gerrit-dbs.sh
+        read_only: true
+      - gerrit-db-data:/var/lib/postgresql/data
+
+volumes:
+  gerrit-db-data:

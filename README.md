@@ -63,3 +63,32 @@ Values should use common unit suffixes to express their setting:
 
 If a unit suffix is not specified, `milliseconds` is assumed.
 Default is `30 seconds`.
+
+## Testing with docker based Postgres setup
+
+One can start test Postgres server that contains both `gerrit_review`
+(Gerrit db) and `gerrit_caches` (db for caches) with the
+following command
+```
+docker-compose -f docker/gerrit-caches-compose.yaml up
+```
+
+One nedds to add the following parameters to `gerrit.config`
+```
+git config --file ${GERRIT_ETC_DIR}/gerrit.config database.type POSTGRESQL
+git config --file ${GERRIT_ETC_DIR}/gerrit.config database.hostname localhost
+git config --file ${GERRIT_ETC_DIR}/gerrit.config database.port 5432
+git config --file ${GERRIT_ETC_DIR}/gerrit.config database.database gerrit_review
+git config --file ${GERRIT_ETC_DIR}/gerrit.config database.username gerrit
+git config --file ${GERRIT_ETC_DIR}/gerrit.config database.password gerrit
+git config --file ${GERRIT_ETC_DIR}/gerrit.config cache.url "jdbc:postgresql://localhost:5432/gerrit_caches?user=gerrit&password=gerrit"
+```
+
+where `GERRIT_ETC_DIR` is `GERRIT_SITE/etc`;
+
+Notes
+* container name is `gerrit-pg`
+* container uses `docker_gerrit-db-data` volume therefore restarting it
+preserves data
+* details of Postgres user/dbs setup can be found in `docker/create-gerrit-dbs.sh`
+* Postgres container details (ports, volumes, etc.) are in `docker/gerrit-caches-compose.yaml`
